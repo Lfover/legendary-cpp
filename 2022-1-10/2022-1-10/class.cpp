@@ -22,21 +22,15 @@ using namespace std;
 class Data
 {
 public:
-	//Data(int year, int month, int day)
-	//{
-	//	_year = year;
-	//	_month = month;
-	//	_day = day;
-	//}
-	//Data()
-	//{
-
-	//}
-	void Set(int year, int month, int day)
+	void SetData(int year, int month, int day)
 	{
 		_year = year;
 		_month = month;
 		_day = day;
+	}
+	void PrintfData()
+	{
+		cout << _year << " " << _month << " " << _day << endl;
 	}
 private:
 	int _year;
@@ -46,8 +40,18 @@ private:
 
 int main()
 {
-	Data d();
-	//d.Set(100, 12, 12);
+	Data d1, d2, d3;
+	d1.SetData(2022, 1, 9);
+	d2.SetData(2022, 1, 10);
+	d3.SetData(2022, 1, 11);
+
+	d1.PrintfData();
+	d2.PrintfData();
+	d3.PrintfData();
+
+	cout << sizeof(d1) << endl;
+	cout << sizeof(d2) << endl;
+	cout << sizeof(d3) << endl;
 	system("pause");
 	return 0;
 	
