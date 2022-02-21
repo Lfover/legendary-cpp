@@ -52,7 +52,7 @@ int main()
 
 #endif
 
-#if 0
+//#if 0
 //»ùÀà
 class B
 {
@@ -85,8 +85,10 @@ int main()
 	TestD();
 	return 0;
 }
-#endif
+//#endif
 
+
+#if 0
 class B
 {
 public:
@@ -126,3 +128,4 @@ int main()
 	cout << sizeof(D) << endl;
 	return 0;
 }
+#endif
