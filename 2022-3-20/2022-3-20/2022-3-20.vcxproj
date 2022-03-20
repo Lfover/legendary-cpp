@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6229BB5F-25C0-45BF-8DB6-76A7CAE894F0}</ProjectGuid>
-    <RootNamespace>My2022218</RootNamespace>
+    <ProjectGuid>{54A316AC-2F2E-4549-8991-CDB316CC1A55}</ProjectGuid>
+    <RootNamespace>My2022320</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,10 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="map.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AVLTree.h" />
+    <ClCompile Include="model.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
