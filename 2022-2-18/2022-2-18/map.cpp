@@ -62,6 +62,8 @@ void TestMap2()
 }
 #include <queue>
 #include <vector>
+#include <set>
+#if 0
 class Com
 {
 public:
@@ -89,6 +91,7 @@ void TestMap()
 		{
 			//用前k个元素建立一个小堆
 			p.push(e);
+			k++;
 		}
 		else
 		{
@@ -101,16 +104,56 @@ void TestMap()
 		}
 	}
 	//数量最多的三个水果都在这个堆里，堆中只有三个
-	vector<string> vret;
-	while (!p.empty()) 
+	//vector<string> vret;
+	//while (!p.empty()) 
+	//{
+	//	vret.push_back(p.top().first);
+	//	p.pop();
+	//}
+	set<string> vret;
+	while (!p.empty())
 	{
-		vret.push_back(p.top().first);
+		vret.insert(p.top().first);
 		p.pop();
 	}
+	for (auto& e :  vret)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
 }
 int main()
 {
 	//TestMap();
 	TestMap2();
+	return 0;
+}
+#endif
+int main()
+{
+	//set的作用，去重，排序
+	int arrary[] = { 1, 2, 3, 4, 5, 0, 9, 6, 2, 5, 1, 5 };
+	set<int> s;
+	for (auto e : arrary)
+		s.insert(e);
+	cout << s.size() << endl;
+	auto it = s.begin();
+	while (it != s.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+	it = s.find(5);
+	if (it != s.end())
+		s.erase(it);
+	s.erase(0);
+	for (auto e : s)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+	s.clear();
+	cout << s.empty() << endl;
 	return 0;
 }
