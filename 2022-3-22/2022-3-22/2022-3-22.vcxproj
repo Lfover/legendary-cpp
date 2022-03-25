@@ -64,6 +64,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RBTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BRTREE.hpp" />
+    <ClInclude Include="MAP.hpp" />
+    <ClInclude Include="SET.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
