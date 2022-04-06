@@ -64,8 +64,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BitSet.hpp" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="HashBucket.hpp" />
+    <ClInclude Include="unorderedMap.hpp" />
+    <ClInclude Include="unorderedSet.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp" />

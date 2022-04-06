@@ -15,7 +15,7 @@ struct HashBucketNode
 	T data;
 };
 //前置声明
-template<class T, class DToI = DToIntDef<T>>
+template<class T, class KOFD, class DToI = DToIntDef<T>>
 class HashBucket;
 
 template<class T, class DToI = DToIntDef<T>>
@@ -121,7 +121,7 @@ public:
 		return iterator(nullptr, this);
 	}
 	//只可以插入唯一的元素
-	bool InsertUnique(const T& data)
+	pair<iterator, bool> InsertUnique(const T& data)
 	{
 		CheckCapacity();
 		//1.通过哈希函数计算元素所在的桶号 
@@ -132,7 +132,7 @@ public:
 		while (cur)
 		{
 			if (data == cur->data)
-				return false;
+				return make_pair(iterator(cur, this), false);
 			cur = cur->next;
 		}
 		//3.插入新结点，头插
@@ -140,11 +140,12 @@ public:
 		cur->next = _table[bucketNo];
 		_table[bucketNo] = cur;
 		_size++;
-		return true;
+		return make_pair(iterator(cur, this), true);
 	}
 	//可以插入重复的元素
 	bool InsertEqual(const T& data)
 	{
+		CheckCapacity();
 		//1.通过哈希函数计算元素所在的桶号 
 		size_t bucketNo = HashFunc(data);
 		
@@ -217,7 +218,7 @@ public:
 	}
 
 	//查找
-	Node* Find(const T& data)
+	iterator Find(const T& data)
 	{
 		//1.通过哈希函数计算data所在的桶号
 		size_t bucketNo = HashFunc(data);
@@ -227,10 +228,10 @@ public:
 		while (cur)
 		{
 			if (data == cur->data)
-				return cur;
+				return iterator(cur, this);
 			cur = cur->next;
 		}
-		return nullptr;
+		return end();
 	}
 	size_t Size()const
 	{
@@ -265,6 +266,21 @@ public:
 	size_t BucketCount()const
 	{
 		return _table.capacity();
+	}
+	size_t BucketSize(size_t bucketNo)const
+	{
+		size_t count = 0;
+		Node* cur = _table[bucketNo];
+		while (cur)
+		{
+			count++;
+			cur = cur->next;
+		}
+		return count;
+	}
+	size_t Bucket(const K& key)const
+	{
+		return HashFunc(BucketCount(), key);
 	}
 	//打印
 	void Print()
