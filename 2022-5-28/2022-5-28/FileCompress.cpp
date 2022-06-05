@@ -1,5 +1,7 @@
-#include "FileCompress.h"
 
+#include "FileCompress.h"
+#include <iostream>
+using namespace std;
 
 FileCompress::FileCompress()
 {
@@ -138,29 +140,29 @@ void FileCompress::GenerateCode(HTNode<CharInfo>* root)
 	if (NULL == root)
 		return;
 
-	if (NULL == root->left && NULL == root->right)
+	if (NULL == root->_left && NULL == root->_right)
 	{
 		// 从叶子一直向根节点方向移动找编码
 		HTNode<CharInfo>* cur = root;
-		HTNode<CharInfo>* parent = cur->parent;
+		HTNode<CharInfo>* parent = cur->_parent;
 
-		auto& strCode = fileInfo[cur->weight.ch].strCode;
+		auto& strCode = fileInfo[cur->_weight.ch].strCode;
 		while (parent)
 		{
-			if (cur == parent->left)
+			if (cur == parent->_left)
 				strCode += '0';
 			else
 				strCode += '1';
 
 			cur = parent;
-			parent = cur->parent;
+			parent = cur->_parent;
 		}
 
-		reverse(strCode.begin(), strCode.end());
+		std::reverse(strCode.begin(), strCode.end());
 	}
 
-	GenerateCode(root->left);
-	GenerateCode(root->right);
+	GenerateCode(root->_left);
+	GenerateCode(root->_right);
 }
 
 
@@ -205,7 +207,7 @@ bool FileCompress::UNCompressFile(const std::string& strFilePath)
 	// 解压缩
 	uchar readBuff[1024];
 	HTNode<CharInfo>* cur = ht.GetRoot();
-	size_t filesize = cur->weight.appearCount;
+	size_t filesize = cur->_weight.appearCount;
 	size_t unCompressSize = 0;
 	while (true)
 	{
@@ -225,16 +227,16 @@ bool FileCompress::UNCompressFile(const std::string& strFilePath)
 			{
 				// 检测ch最高是1还是0
 				if (ch & 0x80)
-					cur = cur->right;
+					cur = cur->_right;
 				else
-					cur = cur->left;
+					cur = cur->_left;
 
 				ch <<= 1;
 
-				if (NULL == cur->left && NULL == cur->right)
+				if (NULL == cur->_left && NULL == cur->_right)
 				{
 					// cur一定是叶子节点
-					fputc(cur->weight.ch, fOut);
+					fputc(cur->_weight.ch, fOut);
 					cur = ht.GetRoot();
 					unCompressSize++;
 					if (filesize == unCompressSize)

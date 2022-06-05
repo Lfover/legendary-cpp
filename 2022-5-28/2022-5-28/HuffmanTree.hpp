@@ -1,3 +1,4 @@
+
 #pragma once
 #include <queue>
 #include <vector>
@@ -9,11 +10,16 @@ template<class W>
 struct HTNode
 {
 	HTNode(const W& w)
-		: left(nullptr)
-		, right(nullptr)
-		, parent(nullptr)
-		, weight(w)
+		: _left(nullptr)
+		, _right(nullptr)
+		, _parent(nullptr)
+		, _weight(w)
 	{}
+	HTNode<W>* _left;
+	HTNode<W>* _right;
+	HTNode<W>* _parent;
+	HTNode<W>* _weight;
+
 };
 
 //写一个比较左右子树的方法
@@ -31,11 +37,11 @@ class HuffmanTree
 {
 public:
 	//构造函数
-	huffmanTree()
+	HuffmanTree()
 		: root(nullptr)
 	{}
 	//析构函数
-	~huffmanTree()
+	~HuffmanTree()
 	{
 		DestoryTree(root);
 	}
@@ -49,6 +55,7 @@ public:
 		std::priority_queue<HTNode<W>*, std::vector<HTNode<W>*>, Compare<W>> q;
 		for (size_t i = 0; i < size; i++)
 		{
+			//判断字符是否合法，合法才会放到优先级队列中
 			if (array[i] != invaid)
 				q.push(new HTNode<W>(array[i]));
 		}

@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <string>
@@ -51,3 +52,4 @@ private:
 private:
 	CharInfo fileInfo[256];// 保存源文件中字符出现的次数信息以及编码
 };
+

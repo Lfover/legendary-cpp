@@ -38,3 +38,4 @@ private:
 	vector<CharInfo> _charinfo;
 
 };
+

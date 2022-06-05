@@ -1,7 +1,9 @@
+
 #pragma once
 #include "common.h"
 #include <string>
 #include "HuffmanTree.hpp"
+#include "HashTable.h"
 using namespace std;
 
 struct ElemInfo
@@ -64,8 +66,8 @@ private:
 	void StartAppearCount();
 	ush GetIntervalCodeIndex(uch len);
 	ush GetIntervalCodeIndex(ush dist);
-	void GenerateCodeLen(HuffmanTreeNode<ElemInfo>* root, vector<ElemInfo>& elemInfo);
-	void GenerateCodeLen(HuffmanTreeNode<ElemInfo>* root, vector<ElemInfo>& elemInfo, ush len);
+	void GenerateCodeLen(HTNode<ElemInfo>* root, vector<ElemInfo>& elemInfo);
+	void GenerateCodeLen(HTNode<ElemInfo>* root, vector<ElemInfo>& elemInfo, ush len);
 	void GenerateCode(vector<ElemInfo>& codeInfo);
 	void WriteCodeLen();
 

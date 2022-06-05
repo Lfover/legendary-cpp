@@ -1,3 +1,4 @@
+
 #include "BitZip.h"
 #include <iostream>
 using namespace std;
@@ -102,8 +103,8 @@ BitZip::BitZip()
 	for (ush i = 0; i < _distInfo.size(); ++i)
 	{
 		_distInfo[i]._ch = i;
-		_distInfo[i].appearCount = 0;
-		_distInfo[i].len = 0;
+		_distInfo[i]._appearCount = 0;
+		_distInfo[i]._len = 0;
 		_distInfo[i]._chCode = 0;
 
 	}
@@ -366,7 +367,7 @@ void BitZip::CompressBlock()
 			flag = _flagData[flagIdx++];
 			bitCount = 8;
 		}
-
+		//结策最高位是0是1，就是是源字符还是长度
 		if (flag & 0x80)
 		{
 			// _byteLenDate[i]: 长度
