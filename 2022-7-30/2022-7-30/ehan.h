@@ -1,3 +1,4 @@
+/*
 //静态指针，类外初始化
 #pragma once
 class Singleton
@@ -36,3 +37,4 @@ Singleton& Singleton::GetInstance()
 }
 //函数调用
 Singleton& instance = Singleton::GetInstance();
+*/

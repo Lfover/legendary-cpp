@@ -40,7 +40,7 @@ int main()
 }
 */
 
-
+/*
 //静态局部变量
 //代码实例（线程安全）
 #include <string>
@@ -99,3 +99,4 @@ int main(int argc, char* argv[])
     Context::GetInstance()->fun();
     return 0;
 }
+*/
